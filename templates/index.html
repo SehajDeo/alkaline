@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Invoice vs PO Comparator</title>
+</head>
+<body>
+  <h1>Compare Purchase Order with Invoice</h1>
+  <form action="/compare" method="POST" enctype="multipart/form-data">
+    <label>Upload PO PDF:</label><br>
+    <input type="file" name="po_file" required><br><br>
+
+    <label>Upload Invoice PDF:</label><br>
+    <input type="file" name="invoice_file" required><br><br>
+
+    <input type="submit" value="Compare">
+  </form>
+
+  {% if result %}
+    <h2>Comparison Result:</h2>
+    <pre>{{ result }}</pre>
+  {% endif %}
+</body>
+</html>
