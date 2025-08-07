@@ -9,7 +9,7 @@ load_dotenv()  # load environment variables
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 st.set_page_config(page_title="PO vs Invoice - GPT Comparator", layout="wide")
-st.title("📄 PO vs Invoice - GPT-Powered Comparator")
+st.title("📄 PO vs Invoice - Smart Comparison Tool (By Sehaj Deo)")
 
 po_file = st.file_uploader("Upload PO PDF", type="pdf")
 inv_file = st.file_uploader("Upload Invoice PDF", type="pdf")
@@ -39,7 +39,7 @@ Item Number | Description | Qty PO | Qty Invoice | Unit Price PO | Unit Price In
 {inv_text}
 """
 
-@st.cache_data(show_spinner="Asking GPT...")
+@st.cache_data(show_spinner="Making calculations...")
 def get_comparison(po_text, inv_text):
     prompt = build_prompt(po_text, inv_text)
     response = openai.chat.completions.create(
